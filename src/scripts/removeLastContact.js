@@ -6,10 +6,10 @@ export const removeLastContact = async () => {
   try {
     const data = await readContacts();
 
-    if (!Array.isArray(data)) {
-      console.log('Data is invalid. Expected an array.');
-      return;
-    }
+    // if (!Array.isArray(data)) {
+    //   console.log('Data is invalid. Expected an array.');
+    //   return;
+    // }
 
     if (data.length === 0) {
       console.log('No contacts to remove. The list is already empty.');
