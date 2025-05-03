@@ -3,10 +3,17 @@ import { readContacts } from '../utils/readContacts.js';
 export const countContacts = async () => {
   try {
     const data = await readContacts();
+    if (!Array.isArray(data)) {
+      throw new Error('Data is invalid. Expected an array.');
+    }
     return data.length;
   } catch (err) {
-    console.error('Failed to count contacts:', err.message);
+    throw new Error(`Failed to count contacts: ${err.message}`);
   }
 };
 
-console.log(await countContacts());
+try {
+  console.log(await countContacts());
+} catch (err) {
+  console.error(err.message);
+}
